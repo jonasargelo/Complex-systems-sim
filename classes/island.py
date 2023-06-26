@@ -1,3 +1,8 @@
+"""
+Complex System Simulation Group Project
+"""
+
+
 from classes.algorithm import Voter
 
 import numpy as np
@@ -13,8 +18,8 @@ class Island:
         self.num_species = list()
         self.width = grid_size
         self.height = grid_size
-        # self.x = x_coordinate
-        # self.y = y_coordinate
+        self.x = x_coordinate
+        self.y = y_coordinate
         if algorithm == 'Voter':
             self.algorithm = Voter(grid_size)
 
