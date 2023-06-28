@@ -4,7 +4,6 @@ Complex System Simulation Group Project
 
 
 import numpy as np
-import random
 
 class Voter:
     def __init__(self, K):
