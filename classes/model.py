@@ -14,7 +14,7 @@ class Model:
     Creates a model with multiple islands.
     """
 
-    def __init__(self, island_grid_size, total_grid, iterations, alpha, no_islands=4) -> None:
+    def __init__(self, island_grid_size, total_grid, iterations, distance=-1, no_islands=2, alpha=3e-4) -> None:
         self.no_islands = no_islands
         self.grid_size = island_grid_size
         self.total_grid_size = total_grid
@@ -22,6 +22,7 @@ class Model:
         self.islands = self.create_islands()
         self.alpha = alpha
         self.counter = 0
+        self.fixed_distance = distance
 
     def create_islands(self) -> list:
         """
@@ -36,7 +37,7 @@ class Model:
             if self.check_location(x_coordinate, y_coordinate, half_size, new_islands) and i > 0:
                 continue
             new_islands.append(Island(x_coordinate, y_coordinate, self.grid_size, self.iterations))
-        print(len(new_islands))
+        #print(len(new_islands))
         return new_islands
 
     def check_location(self, x, y, size, islands) -> bool:
@@ -49,7 +50,7 @@ class Model:
         """
         Simple probability for testing.
         """
-        return 1 / (distance ** 0.5)
+        return 0.5 / (distance)
 
     def interaction_prob(self, distance) -> float:
         pass
@@ -68,7 +69,7 @@ class Model:
         y = np.random.choice(np.arange(0, self.islands[random_index].height))
         self.islands[random_index].algorithm.current_grid[x, y] = most
 
-    def step(self) -> None:
+    def run(self) -> None:
 
         for i in range(self.iterations):
             # For every island perform the single island dynamics
@@ -84,8 +85,11 @@ class Model:
                 random_index = np.random.choice(indices)
 
                 # Calculate distance towards other island and calculate probability to migrate
-                distance = self.islands[i].get_distance([self.islands[random_index].get_coordinates()])
-                prob = self.simple_prob(distance)
+                if self.fixed_distance > 0:
+                    prob = self.simple_prob(self.fixed_distance)
+                else:
+                    distance = self.islands[i].get_distance([self.islands[random_index].get_coordinates()])
+                    prob = self.simple_prob(distance)
 
                 # Check if migrations takes place and perform the interaction
                 if prob > np.random.uniform():
