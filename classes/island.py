@@ -16,7 +16,6 @@ class Island:
     def __init__(self, x_coordinate, y_coordinate, grid_size, n_iters, algorithm='Voter') -> None:
         self.grid_size = grid_size
         self.coordinates = np.array([x_coordinate, y_coordinate])
-        self.num_species = list()
         self.rand_walkers = list(itertools.product(range(self.grid_size), range(self.grid_size)))
         self.rand_walker_pos = list(self.rand_walkers.copy())
         self.lineages = self.initialize_lineages()
@@ -29,6 +28,7 @@ class Island:
         self.y = y_coordinate
         if algorithm == 'Voter':
             self.algorithm = Voter(grid_size)
+        self.num_species = len(np.unique(self.algorithm.current_grid))
 
     def initialize_lineages(self):
         lin = [set() for _ in range(len(self.rand_walkers))]
@@ -61,8 +61,10 @@ class Island:
             neighbor_idx = np.random.choice(len(neighbors))
             new_type = self.algorithm.current_grid[neighbors[neighbor_idx]]
             self.algorithm.current_grid[self.xs[i], self.ys[i]] = new_type
+        if i % 1000 == 0:
+            self.species.append(len(np.unique(self.algorithm.current_grid)))
 
-        return self.algorithm.current_grid, self.num_species
+        #return self.algorithm.current_grid, self.num_species
 
     def new_step(self, alpha):
         # Draw full list of random numbers to save time
