@@ -3,10 +3,12 @@
 ## Description
 
 This project looks into the species area curve and consists of two main research questions.
-1. What components are necessary to produce the power-law species are curve? 
-2. How does the way organisms reproduce affect the shape of the species area curve? 
+1. What components are necessary to produce the power-law species are curve?
+2. How does the way organisms reproduce affect the shape of the species area curve?
 
 The algorithm that is used to simulate the dynamics, is the Voter model with mutation. The single grid simulations use the backwards Voter model, the island model uses the forward Voter model. In the single grid, varying values for the fatness of the fat tail distribution and varying kernel widths are tested. In the multiple island model two islands are places increaslingly further apart from each other to test the change in dynamics.
+
+Github link: https://github.com/jonasargelo/Complex-systems-sim
 
 ## Usage
 #### Structure
