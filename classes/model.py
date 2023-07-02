@@ -6,6 +6,7 @@ Complex System Simulation Group Project
 from classes.island import Island
 
 import itertools
+import math
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -14,7 +15,7 @@ class Model:
     Creates a model with multiple islands.
     """
 
-    def __init__(self, island_grid_size, total_grid, iterations, distance=-1, no_islands=2, alpha=3e-4) -> None:
+    def __init__(self, island_grid_size, total_grid, iterations, distance=-1, no_islands=2, alpha=3e-3) -> None:
         self.no_islands = no_islands
         self.grid_size = island_grid_size
         self.total_grid_size = total_grid
@@ -53,7 +54,8 @@ class Model:
         return 0.5 / (distance)
 
     def interaction_prob(self, distance) -> float:
-        pass
+        l = 0.1
+        return np.exp(-distance * l)
 
     def interaction(self, i, random_index) -> None:
         """
@@ -86,7 +88,7 @@ class Model:
 
                 # Calculate distance towards other island and calculate probability to migrate
                 if self.fixed_distance > 0:
-                    prob = self.simple_prob(self.fixed_distance)
+                    prob = self.interaction_prob(self.fixed_distance)
                 else:
                     distance = self.islands[i].get_distance([self.islands[random_index].get_coordinates()])
                     prob = self.simple_prob(distance)
@@ -143,6 +145,11 @@ class Model:
         plt.imshow(plot_island.algorithm.starting_grid)
         plt.show()
         plt.imshow(plot_island.algorithm.current_grid)
+        plt.show()
+
+    def convergence_plot(self, plot_island) -> None:
+        x_axis = [i for i in range(self.iterations) if i % 1000 == 0]
+        plt.loglog(x_axis, plot_island.species)
         plt.show()
 
     def sa_curve(self, grid) -> None:
