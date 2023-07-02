@@ -6,6 +6,12 @@ Complex System Simulation Group Project
 import numpy as np
 
 class Voter:
+    """
+    Creates an istance of the voter forward algorithm.
+    Parameters:
+    - K (int): size of the grid
+    """
+
     def __init__(self, K):
         self.starting_grid = np.random.rand(K, K)
         self.current_grid = self.starting_grid.copy()
@@ -37,7 +43,13 @@ class Voter:
         return neighbors
 
     def get_starting_grid(self):
+        """
+        Return the starting grid.
+        """
         return self.starting_grid
 
     def get_current_grid(self):
+        """
+        Return the current grid
+        """
         return self.current_grid
