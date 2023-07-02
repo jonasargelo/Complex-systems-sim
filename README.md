@@ -2,7 +2,11 @@
 ## Species area curve
 ## Description
 
-This project looks into the species area curve and consists of two main research questions. The first one is: what components are necessary to produce the power-law species are curve. The second is: how does the way organisms reproduce affect the shape of the species area curve. The algorithm that is used to simulate the dynamics, is the Voter model with mutation. The single grid simulations use the backwards Voter model, the island model uses the forward Voter model. In the single grid, changes in the fatness of the fat tail distribution and changes in the kernel width are tested. In the multiple island model two islands are places increaslingly further apart from each other to test the change in dynamics.
+This project looks into the species area curve and consists of two main research questions.
+1. What components are necessary to produce the power-law species are curve? 
+2. How does the way organisms reproduce affect the shape of the species area curve? 
+
+The algorithm that is used to simulate the dynamics, is the Voter model with mutation. The single grid simulations use the backwards Voter model, the island model uses the forward Voter model. In the single grid, varying values for the fatness of the fat tail distribution and varying kernel widths are tested. In the multiple island model two islands are places increaslingly further apart from each other to test the change in dynamics.
 
 ## Usage
 #### Structure
@@ -10,8 +14,8 @@ This project looks into the species area curve and consists of two main research
 - **/Basic model runs**: outcomes of every basic model run
 - **/classes**: all the classes used for the multiple island model
 - **/Forward voter model**: forward voter model, only used for island model
-- **/Varying eta runs**: results for multiple varying eta runs
-- **/Varying width runs**: results for varying the width
+- **/Varying eta runs**: results for varying eta (backward voter model)
+- **/Varying width runs**: results for varying the kernel width (backward voter model)
 
 #### Install dependencies
 ```
