@@ -2,7 +2,7 @@
 ## Species area curve
 ## Description
 
-This project looks into the species area curve and consists of two main research questions. The first one is: what components are necessary to produce the power-law species are curve. The second is: how does the way organisms reproduce affect the shape of the species area curve. The algorithm that is used to simulate the dynamics, is the Voter model with mutation. The single grid simulations use the backwards Voter model, the island model uses the forward Voter model. 
+This project looks into the species area curve and consists of two main research questions. The first one is: what components are necessary to produce the power-law species are curve. The second is: how does the way organisms reproduce affect the shape of the species area curve. The algorithm that is used to simulate the dynamics, is the Voter model with mutation. The single grid simulations use the backwards Voter model, the island model uses the forward Voter model. In the single grid, changes in the fatness of the fat tail distribution and changes in the kernel width are tested. In the multiple island model two islands are places increaslingly further apart from each other to test the change in dynamics.
 
 ## Usage
 #### Structure
