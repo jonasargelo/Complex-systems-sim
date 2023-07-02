@@ -12,7 +12,7 @@ This project looks into the species area curve and consists of two main research
 - **/Forward voter model**: forward voter model, only used for island model
 - **/Varying eta runs**: results for multiple varying eta runs
 - **/Varying width runs**: results for varying the width
-  
+
 #### Install dependencies
 ```
 pip3 install -r requirements.txt
@@ -20,6 +20,8 @@ pip3 install -r requirements.txt
 #### Reproduction
 
 To reproduce the island model results the simulation function in the multiple_islands.ipynb can be used.
+
+To reproduce the results obtained for single grids, the function voter_model_fast() from the notebook 'Backwards voter model/backwards_time_voter_model.ipynb' can be used. This function is based on the paper 'A coalescence approach to spatial neutral ecology' by Rosindell J. et al (2008).
 
 ## Authors and acknowledgment
 - Jonas Argelo
